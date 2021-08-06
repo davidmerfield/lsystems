@@ -4,9 +4,8 @@
 
 char * evolve ( char * axiom);
 
-void hello(int iterations) {
+void hello(int iterations, char * axiom) {
 
-  char *axiom = "A";
   char *result = malloc((strlen(axiom) + 1) * sizeof(char));
 
   strcpy(result, axiom);

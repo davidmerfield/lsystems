@@ -3,14 +3,14 @@
 
 int main( int argc, char *argv[] ) {
 
-  if ( argc == 2 ) {
+  if ( argc == 3 ) {
     int iterations;
     sscanf(argv[1], "%d", &iterations);
-    hello(iterations);
-  } else if ( argc > 2 ) {
+    hello(iterations, argv[2]);
+  } else if ( argc > 3 ) {
     printf("Too many arguments supplied.\n");
   } else {
-    printf("One argument expected.\n");
+    printf("Two arguments expected.\n");
   }
 
   return 0;
