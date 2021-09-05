@@ -17,7 +17,6 @@ void insertCharArray(CharArray *a, char element);
 void freeCharArray(CharArray *a);
 
 char * evolve ( char * axiom, RuleArray list_of_rules) {
-
   CharArray result;
   initCharArray(&result, 0);
 
@@ -35,7 +34,6 @@ char * evolve ( char * axiom, RuleArray list_of_rules) {
   }
   insertCharArray(&result, '\0');
   return result.array;
-
 }
 
 
@@ -51,7 +49,11 @@ void insertCharArray(CharArray *a, char element) {
   // the array has been accessed.
   // Therefore a->used can go up to a->size
   if (a->used == a->size) {
-    a->size *= 2;
+    if (a->size == 0) {
+      a->size = 1;
+    } else {
+      a->size *= 2;
+    }
     a->array = realloc(a->array, a->size * sizeof(char));
   }
   a->array[a->used++] = element;

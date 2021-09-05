@@ -21,14 +21,13 @@ void initRuleArray(RuleArray *a, size_t initialSize);
 void insertRuleArray(RuleArray *a, Rule element);
 void freeRuleArray(RuleArray *a);
 
-RuleArray parse_rules(const char * fileName)
-{
+RuleArray parse_rules(const char * fileName) {
   FILE* file = fopen(fileName, "r");
   char line[256];
 
   RuleArray list_of_rules;
 
-  initRuleArray(&list_of_rules, 1);  
+  initRuleArray(&list_of_rules, 1);
 
   while (fgets(line, sizeof(line), file)) {
     insertRuleArray(&list_of_rules, handle_line(line));
@@ -39,8 +38,7 @@ RuleArray parse_rules(const char * fileName)
   return list_of_rules;
 }
 
-Rule handle_line(char line[256])
-{
+Rule handle_line(char line[256]) {
   char key = line[0];
   int value_len = 0;
 
@@ -77,7 +75,11 @@ void insertRuleArray(RuleArray *a, Rule element) {
   // the array has been accessed.
   // Therefore a->used can go up to a->size
   if (a->used == a->size) {
-    a->size *= 2;
+    if (a->size == 0) {
+      a->size = 1;
+    } else {
+      a->size *= 2;
+    }
     a->array = realloc(a->array, a->size * sizeof(Rule));
   }
   a->array[a->used++] = element;
