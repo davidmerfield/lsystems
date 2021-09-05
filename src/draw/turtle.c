@@ -1,18 +1,6 @@
-#ifndef TURTLE_C
-#define TURTLE_C
 #include <math.h>
-#include "line.c"
+#include "turtle.h"
 
-typedef struct {
-  double x;
-  double y;
-  double angle;
-} Turtle;
-
-
-void initializeTurtle(Turtle *turtle, double x, double y, double angle);
-void turnTurtle(Turtle *turtle, double angle);
-Line moveTurtle(Turtle *turtle, double distance);
 
 void initializeTurtle(Turtle *turtle, double x, double y, double angle) {
   turtle->x = x;
@@ -35,5 +23,3 @@ Line moveTurtle(Turtle *turtle, double distance) {
   return line;
 }
 
-
-#endif

@@ -1,15 +1,6 @@
-#ifndef SVG
-#define SVG
-
 #include <stdio.h>
-#include "line.c"
+#include "svg.h"
 
-
-void printLine(const Line line);
-void printViewBoxOpen(double minX, double minY, double xSpan, double ySpan);
-void printViewBoxClose();
-void printHtmlOpen();
-void printHtmlClose();
 
 void printLine(const Line line) {
   printf("<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\" />\n",
@@ -34,4 +25,3 @@ void printHtmlClose() {
   printf("</body>\n</html>\n");
 }
 
-#endif

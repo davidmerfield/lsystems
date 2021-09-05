@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "math.h"
-#include "turtle.c"
-#include "line.c"
-#include "svg.c"
+#include "turtle.h"
+#include "line.h"
+#include "svg.h"
 
 
 const double FORWARD = 1;
