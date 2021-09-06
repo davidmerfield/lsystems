@@ -49,7 +49,7 @@ lsystem: $(LSYSTEM_BIN)
 
 all: draw lsystem
 
-.PHONY: clean
+.PHONY: clean all
 
 clean:
 	rm -r $(ODIR)
