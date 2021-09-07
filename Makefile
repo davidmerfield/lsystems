@@ -64,7 +64,7 @@ clean:
 test_draw: draw
 	bash tests/bin/draw_tests.sh
 
-test_lsystems: draw
+test_lsystems: lsystem
 	bash tests/bin/lsystems_tests.sh
 
 test: test_draw test_lsystems

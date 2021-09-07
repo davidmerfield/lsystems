@@ -25,7 +25,7 @@ function runTest() {
   local ruleFile="${RULES_DIR}/$4";
   local iterations="$5";
   printf "Running test %s..." "${testName}";
-  if ! $LSYSTEM_BIN "${axiom}" "${ruleFile}" "${iterations}" > "${testOutFile}"; then
+  if ! ${LSYSTEM_BIN} "${axiom}" "${ruleFile}" "${iterations}" > "${testOutFile}"; then
     printf "FAILURE! %s returned with non-zero exit status." \
       "$(basename "${LSYSTEM_BIN}")"
     return 1;
