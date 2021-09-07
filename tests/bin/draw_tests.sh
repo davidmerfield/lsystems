@@ -13,15 +13,17 @@ mkdir -p "${TEST_OUT_DIR}" 2>/dev/null
 # $1 testName
 # $2 inputFile
 # $3 goldenFile
+# $4 angle
 function runTest() {
   ((testsRun++));
-  [[ $# -ne 3 ]] && return 1;
+  [[ $# -ne 4 ]] && return 1;
   local testName="$1";
   local inputFile="${INPUTS_DIR}/$2";
   local testOutFile="${TEST_OUT_DIR}/$3";
   local goldenFile="${GOLDEN_DIR}/$3";
+  local angle="$4"
   printf "Running test %s..." "${testName}";
-  if ! cat ${inputFile} | ${DRAW_BIN} 500 500 > "${testOutFile}"; then
+  if ! cat "${inputFile}" | "${DRAW_BIN}" 500 500 "${angle}"> "${testOutFile}"; then
     printf "FAILURE! %s returned with non-zero exit status.\n" \
       "$(basename "${DRAW_BIN}")";
     return 1;
@@ -41,6 +43,6 @@ testsSucceeded=0
 printf "Running draw tests...\n" "${testsSucceeded}" "${testsRun}"
 for file in "${INPUTS_DIR}"/*.input; do
   testName="$(basename "${file}")"
-  runTest "${testName%.input}" "${testName}" "${testName/.input/.golden}"
+  runTest "${testName%.input}" "${testName}" "${testName/.input/.golden}" 90
 done
 printf "Finished draw tests. %u / %u tests succeeded.\n" "${testsSucceeded}" "${testsRun}"
