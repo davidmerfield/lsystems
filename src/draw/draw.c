@@ -4,6 +4,7 @@
 #include "turtle.h"
 #include "line.h"
 #include "svg.h"
+#include "turtleState.h"
 
 
 const double FORWARD = 1;
@@ -23,6 +24,7 @@ int main(int argc, char *argv[]) {
 
   Turtle turtle;
   LineArray lines;
+  initializeLineArray(&lines, 0);
   initializeTurtle(&turtle, 0, 0, 0);
 
   char buf[1];
@@ -35,6 +37,10 @@ int main(int argc, char *argv[]) {
       turnTurtle(&turtle, ANGLE_L);
     } else if (instr == '-') {
       turnTurtle(&turtle, ANGLE_R);
+    } else if (instr == '[') {
+      pushTurtleState(&turtle);
+    } else if (instr == ']') {
+      popTurtleState(&turtle);
     }
   }
 

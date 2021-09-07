@@ -21,7 +21,7 @@ typedef struct {
   double maxY;
 } LineArray;
 
-void initLineArray(LineArray *a, size_t initialSize);
+void initializeLineArray(LineArray *a, size_t initialSize);
 void insertLineArray(LineArray *a, Line element);
 void freeLineArray(LineArray *a);
 void renormalizeLineArray(LineArray *a, double maxX, double maxY);

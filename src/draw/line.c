@@ -3,7 +3,7 @@
 #include "line.h"
 
 
-void initLineArray(LineArray *a, size_t initialSize) {
+void initializeLineArray(LineArray *a, size_t initialSize) {
   a->array = malloc(initialSize * sizeof(Line));
   a->used = 0;
   a->size = initialSize;

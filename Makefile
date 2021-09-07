@@ -47,10 +47,27 @@ $(LSYSTEM_BIN): $(LSYSTEM_OBJS) $(BINDIR)
 draw: $(DRAW_BIN)
 lsystem: $(LSYSTEM_BIN)
 
-all: draw lsystem
+debug_draw: DRAW_CFLAGS += -g -O0
+debug_draw: draw
+debug_lsystem: LSYSTEM_CFLAGS += -g -O0
+debug_lsystem: lsystem
 
-.PHONY: clean all
+all: draw lsystem
+debug: debug_draw debug_lsystem
+
 
 clean:
 	rm -r $(ODIR)
 	rm -r $(BINDIR)
+	rm -r tests/out
+
+test_draw: draw
+	bash tests/bin/draw_tests.sh
+
+test_lsystems: draw
+	bash tests/bin/lsystems_tests.sh
+
+test: test_draw test_lsystems
+
+.PHONY: clean all test_draw test_lsystems test
+
