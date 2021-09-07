@@ -11,7 +11,7 @@ void printLine(const Line line) {
 }
 
 void printViewBoxOpen(double minX, double minY, double xSpan, double ySpan) {
-  printf("<svg viewBox=\"%f %f %f %f\">\n", minX, minY, xSpan, ySpan);
+  printf("<svg viewBox=\"%f %f %f %f\" width=\"50%%\">\n", minX, minY, xSpan, ySpan);
 }
 
 void printViewBoxClose() {
