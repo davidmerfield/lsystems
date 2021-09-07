@@ -4,6 +4,6 @@ bin/*
 obj/*
 *.swp
 tests/out/*
-./draw
-./lsystem
+/draw
+/lsystem
 
