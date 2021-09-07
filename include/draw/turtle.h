@@ -16,9 +16,7 @@ void freeTurtle(Turtle * turtle);
 Line moveTurtle(Turtle * turtle, double distance);
 void turnTurtle(Turtle * turtle, double angle);
 
-void setTurtleState(Turtle * turtle, TurtleState turtleState);
-TurtleState getTurtleState(Turtle * turtle);
 void pushTurtleState(Turtle * turtle);
-TurtleState popTurtleState(Turtle * turtle);
+void popTurtleState(Turtle * turtle);
 
 #endif

@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     } else if (instr == '[') {
       pushTurtleState(&turtle);
     } else if (instr == ']') {
-      setTurtleState(&turtle, popTurtleState(&turtle));
+      popTurtleState(&turtle);
     }
   }
 

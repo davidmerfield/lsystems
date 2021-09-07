@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 #include "turtle.h"
 #include "turtleState.h"
 
@@ -47,7 +48,7 @@ void pushTurtleState(Turtle * turtle) {
   pushTurtleStateStack(&turtle->stateStack, getTurtleState(turtle));
 }
 
-TurtleState popTurtleState(Turtle * turtle) {
-  return popTurtleStateStack(&turtle->stateStack);
+void popTurtleState(Turtle * turtle) {
+  setTurtleState(turtle, popTurtleStateStack(&turtle->stateStack));
 }
 
