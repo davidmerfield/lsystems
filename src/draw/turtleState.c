@@ -33,6 +33,6 @@ TurtleState popTurtleStateStack(TurtleStateStack * a) {
   if (!a->used) {
     exit(1);
   }
-  return a->array[a->used--];
+  return a->array[--a->used];
 }
 
