@@ -45,7 +45,10 @@ $(LSYSTEM_BIN): $(LSYSTEM_OBJS) $(BINDIR)
 	$(CC) -o $@ $(filter %.o,$^) $(LSYSTEM_CFLAGS)
 
 draw: $(DRAW_BIN)
+	ln -s $(DRAW_BIN) $(DRAW)
+
 lsystem: $(LSYSTEM_BIN)
+	ln -s $(LSYSTEM_BIN) $(LSYSTEM)
 
 debug_draw: DRAW_CFLAGS += -g -O0
 debug_draw: draw
@@ -59,6 +62,8 @@ debug: debug_draw debug_lsystem
 clean:
 	rm -r $(ODIR)
 	rm -r $(BINDIR)
+	rm $(DRAW)
+	rm $(LSYSTEM)
 	rm -r tests/out
 
 test_draw: draw
