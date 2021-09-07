@@ -8,19 +8,22 @@
 
 
 const double FORWARD = 1;
-const double ANGLE_L = -1*M_PI_2;
-const double ANGLE_R = M_PI_2;
 
 int main(int argc, char *argv[]) {
 
-  if (argc != 3) {
-    printf("Usage: ./draw_koch <max-width> <max_height> < input\n");
+  if (argc != 4) {
+    printf("Usage: ./draw <max-width> <max_height> <angle> < input\n");
     return 1;
   }
   double maxWidth;
   double maxHeight;
+  double angle;
   sscanf(argv[1], "%lf", &maxWidth);
   sscanf(argv[2], "%lf", &maxHeight);
+  sscanf(argv[3], "%lf", &angle);
+
+  double angle_r = (angle / 360) * (2 * M_PI);
+  double angle_l = -1 * angle_r;
 
   Turtle turtle;
   LineArray lines;
@@ -34,13 +37,13 @@ int main(int argc, char *argv[]) {
     if (instr == 'F') {
       insertLineArray(&lines, moveTurtle(&turtle, FORWARD));
     } else if (instr == '+') {
-      turnTurtle(&turtle, ANGLE_L);
+      turnTurtle(&turtle, angle_l);
     } else if (instr == '-') {
-      turnTurtle(&turtle, ANGLE_R);
+      turnTurtle(&turtle, angle_r);
     } else if (instr == '[') {
       pushTurtleState(&turtle);
     } else if (instr == ']') {
-      popTurtleState(&turtle);
+      setTurtleState(&turtle, popTurtleState(&turtle));
     }
   }
 
