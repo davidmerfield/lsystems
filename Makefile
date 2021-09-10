@@ -44,11 +44,11 @@ $(DRAW_BIN): $(DRAW_OBJS) $(BINDIR)
 $(LSYSTEM_BIN): $(LSYSTEM_OBJS) $(BINDIR)
 	$(CC) -o $@ $(filter %.o,$^) $(LSYSTEM_CFLAGS)
 
-draw: $(DRAW_BIN)
-	ln -s $(DRAW_BIN) $(DRAW)
+draw_links: $(DRAW_BIN)
+	[[ -L $(DRAW) ]] || ln -s $(DRAW_BIN) $(DRAW)
 
-lsystem: $(LSYSTEM_BIN)
-	ln -s $(LSYSTEM_BIN) $(LSYSTEM)
+lsystem_links: $(LSYSTEM_BIN)
+	[[ -L $(LSYSTEM) ]] || ln -s $(LSYSTEM_BIN) $(LSYSTEM)
 
 debug_draw: DRAW_CFLAGS += -g -O0
 debug_draw: draw
