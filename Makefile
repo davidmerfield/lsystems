@@ -12,7 +12,7 @@ DRAW_SRCDIR=$(SRCDIR)/$(DRAW)
 DRAW_ODIR=$(ODIR)/$(DRAW)
 DRAW_SRCS=$(wildcard $(DRAW_SRCDIR)/*.c)
 DRAW_OBJS=$(patsubst $(DRAW_SRCDIR)/%.c,$(DRAW_ODIR)/%.o,$(DRAW_SRCS))
-DRAW_CFLAGS=-I$(DRAW_IDIR)
+DRAW_CFLAGS=-I$(DRAW_IDIR) -lm
 
 LSYSTEM=lsystem
 LSYSTEM_BIN=$(BINDIR)/$(LSYSTEM)
@@ -21,7 +21,7 @@ LSYSTEM_SRCDIR=$(SRCDIR)/$(LSYSTEM)
 LSYSTEM_ODIR=$(ODIR)/$(LSYSTEM)
 LSYSTEM_SRCS=$(wildcard $(LSYSTEM_SRCDIR)/*.c)
 LSYSTEM_OBJS=$(patsubst $(LSYSTEM_SRCDIR)/%.c,$(LSYSTEM_ODIR)/%.o,$(LSYSTEM_SRCS))
-LSYSTEM_CFLAGS=-I$(LSYSTEM_IDIR)
+LSYSTEM_CFLAGS=-I$(LSYSTEM_IDIR) -lm
 
 $(LSYSTEM_ODIR):
 	mkdir -p $@
@@ -44,16 +44,20 @@ $(DRAW_BIN): $(DRAW_OBJS) $(BINDIR)
 $(LSYSTEM_BIN): $(LSYSTEM_OBJS) $(BINDIR)
 	$(CC) -o $@ $(filter %.o,$^) $(LSYSTEM_CFLAGS)
 
-draw: $(DRAW_BIN)
-	ln -s $(DRAW_BIN) $(DRAW)
+draw_links: $(DRAW_BIN)
+	[[ -L $(DRAW) ]] || ln -s $(DRAW_BIN) $(DRAW)
 
-lsystem: $(LSYSTEM_BIN)
-	ln -s $(LSYSTEM_BIN) $(LSYSTEM)
+lsystem_links: $(LSYSTEM_BIN)
+	[[ -L $(LSYSTEM) ]] || ln -s $(LSYSTEM_BIN) $(LSYSTEM)
+
+draw: $(DRAW_BIN) draw_links
+
+lsystem: $(LSYSTEM_BIN) lsystem_links
 
 debug_draw: DRAW_CFLAGS += -g -O0
-debug_draw: draw
+debug_draw: $(DRAW_BIN) draw_links
 debug_lsystem: LSYSTEM_CFLAGS += -g -O0
-debug_lsystem: lsystem
+debug_lsystem: $(DRAW_LINKS) lsystem_links
 
 all: draw lsystem
 debug: debug_draw debug_lsystem

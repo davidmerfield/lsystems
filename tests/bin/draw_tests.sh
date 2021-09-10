@@ -45,4 +45,6 @@ for file in "${INPUTS_DIR}"/*.input; do
   testName="$(basename "${file}")"
   runTest "${testName%.input}" "${testName}" "${testName/.input/.golden}" 90
 done
+
 printf "Finished draw tests. %u / %u tests succeeded.\n" "${testsSucceeded}" "${testsRun}"
+[[ "$testsRun" -eq "$testsSucceeded" ]]
