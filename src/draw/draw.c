@@ -52,8 +52,9 @@ int main(int argc, char *argv[]) {
   printHtmlOpen();
   /* If we don't add a bit of padding around the edges, our curve gets cut off. */
   printViewBoxOpen(-2, -2, lines.maxX + 4, lines.maxY + 4);
+  // printf("%d\n", lines.maxDepth);
   for (int i = 0; i < lines.used; i++) {
-    printLine(lines.array[i]);
+    printLine(lines.array[i], lines.maxDepth);
   }
   printViewBoxClose();
   printHtmlClose();

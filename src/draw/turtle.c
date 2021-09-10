@@ -22,9 +22,10 @@ Line moveTurtle(Turtle *turtle, double distance) {
   line.y1 = turtle->y;
   turtle->x += distance*cos(turtle->angle);
   turtle->y += distance*sin(turtle->angle);
-  turtle->depth++;
+  turtle->depth += 1;
   line.x2 = turtle->x;
   line.y2 = turtle->y;
+  line.depth = turtle->depth;
   return line;
 }
 
@@ -52,7 +53,7 @@ void pushTurtleState(Turtle * turtle) {
 }
 
 void popTurtleState(Turtle * turtle) {
-  turtle->depth--;
+  --turtle->depth;
   setTurtleState(turtle, popTurtleStateStack(&turtle->stateStack));
 }
 

@@ -6,6 +6,7 @@ typedef struct {
   double x;
   double y;
   double angle;
+  int depth;
 } TurtleState;
 
 typedef struct {

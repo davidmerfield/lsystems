@@ -7,6 +7,7 @@ void initializeLineArray(LineArray *a, size_t initialSize) {
   a->array = malloc(initialSize * sizeof(Line));
   a->used = 0;
   a->size = initialSize;
+  a->maxDepth = 0;
 }
 
 void insertLineArray(LineArray *a, Line element) {
@@ -29,7 +30,8 @@ void insertLineArray(LineArray *a, Line element) {
   a->minY = a->used ? fmin(a->minY, elementMinY) : elementMinY;
   a->maxX = a->used ? fmax(a->maxX, elementMaxX) : elementMaxX;
   a->maxY = a->used ? fmax(a->maxY, elementMaxY) : elementMaxY;
-
+  a->maxDepth = fmax(a->maxDepth, element.depth);
+  
   a->used++;
 }
 
