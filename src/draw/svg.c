@@ -2,9 +2,9 @@
 #include "svg.h"
 
 
-void printLine(const Line line, const int maxDepth) {
+void printLine(const Line line) {
 
-  printf("<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\"/>\n",
+  printf("<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\" />\n",
       line.x1,
       line.y1,
       line.x2,
