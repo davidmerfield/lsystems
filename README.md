@@ -1,1 +1,1 @@
-![](./museum/barnsely-fern.png)
+![](museum/barnsley-fern.png)
