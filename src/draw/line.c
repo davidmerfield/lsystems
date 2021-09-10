@@ -31,7 +31,6 @@ void insertLineArray(LineArray *a, Line element) {
   a->maxX = a->used ? fmax(a->maxX, elementMaxX) : elementMaxX;
   a->maxY = a->used ? fmax(a->maxY, elementMaxY) : elementMaxY;
   a->maxDepth = fmax(a->maxDepth, element.depth);
-  
   a->used++;
 }
 

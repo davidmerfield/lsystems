@@ -53,7 +53,7 @@ void pushTurtleState(Turtle * turtle) {
 }
 
 void popTurtleState(Turtle * turtle) {
-  --turtle->depth;
+  turtle->depth--;
   setTurtleState(turtle, popTurtleStateStack(&turtle->stateStack));
 }
 
