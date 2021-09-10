@@ -63,3 +63,4 @@ runTest cantor4 cantor4 A koch.rule 4
 runTest cantor5 cantor5 A koch.rule 5
 
 printf "Finished lsystems tests. %u / %u tests succeeded.\n" "${testsSucceeded}" "${testsRun}"
+[[ "$testsRun" -eq "$testsSucceeded" ]]
