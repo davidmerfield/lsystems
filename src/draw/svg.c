@@ -3,13 +3,11 @@
 
 
 void printLine(const Line line) {
-
   printf("<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\" />\n",
       line.x1,
       line.y1,
       line.x2,
-      line.y2
-  );
+      line.y2);
 }
 
 void printViewBoxOpen(double minX, double minY, double xSpan, double ySpan) {
