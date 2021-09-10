@@ -50,10 +50,14 @@ draw_links: $(DRAW_BIN)
 lsystem_links: $(LSYSTEM_BIN)
 	[[ -L $(LSYSTEM) ]] || ln -s $(LSYSTEM_BIN) $(LSYSTEM)
 
+draw: $(DRAW_BIN) draw_links
+
+lsystem: $(LSYSTEM_BIN) lsystem_links
+
 debug_draw: DRAW_CFLAGS += -g -O0
-debug_draw: draw
+debug_draw: $(DRAW_BIN) draw_links
 debug_lsystem: LSYSTEM_CFLAGS += -g -O0
-debug_lsystem: lsystem
+debug_lsystem: $(DRAW_LINKS) lsystem_links
 
 all: draw lsystem
 debug: debug_draw debug_lsystem
