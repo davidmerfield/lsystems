@@ -1,0 +1,4 @@
+*.golden linguist-detectable=false
+*.input linguist-detectable=false
+*.svg linguist-detectable=false
+*.html linguist-detectable=false
