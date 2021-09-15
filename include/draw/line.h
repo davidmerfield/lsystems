@@ -8,6 +8,7 @@ typedef struct {
   double y1;
   double x2;
   double y2;
+  int depth;
 } Line;
 
 typedef struct {
@@ -19,6 +20,7 @@ typedef struct {
   double minY;
   double maxX;
   double maxY;
+  int maxDepth;
 } LineArray;
 
 void initializeLineArray(LineArray *a, size_t initialSize);
