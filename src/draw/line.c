@@ -2,6 +2,11 @@
 #include <math.h>
 #include "line.h"
 
+int max(int x, int y);
+
+inline int max (int x, int y) {
+  return (x < y) ? y : x;
+}
 
 void initializeLineArray(LineArray *a, size_t initialSize) {
   a->array = malloc(initialSize * sizeof(Line));
@@ -30,7 +35,7 @@ void insertLineArray(LineArray *a, Line element) {
   a->minY = a->used ? fmin(a->minY, elementMinY) : elementMinY;
   a->maxX = a->used ? fmax(a->maxX, elementMaxX) : elementMaxX;
   a->maxY = a->used ? fmax(a->maxY, elementMaxY) : elementMaxY;
-  a->maxDepth = fmax(a->maxDepth, element.depth);
+  a->maxDepth = max(a->maxDepth, element.depth);
   a->used++;
 }
 

@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
   /* If we don't add a bit of padding around the edges, our curve gets cut off. */
   printViewBoxOpen(-2, -2, lines.maxX + 4, lines.maxY + 4);
   for (int i = 0; i < lines.used; i++) {
-    printLine(lines.array[i], lines.maxDepth);
+    printLine(lines.array[i]);
   }
   printViewBoxClose();
   printHtmlClose();

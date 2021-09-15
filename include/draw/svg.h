@@ -3,7 +3,7 @@
 #include "line.h"
 
 
-void printLine(const Line line, const int maxDepth);
+void printLine(const Line line);
 void printViewBoxOpen(double minX, double minY, double xSpan, double ySpan);
 void printViewBoxClose();
 void printHtmlOpen();
