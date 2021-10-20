@@ -4,7 +4,7 @@
 
 
 void initCharArray(CharArray *a, size_t initialSize) {
-  a->array = malloc(initialSize * sizeof(char));
+  a->array = (char *) malloc(initialSize * sizeof(char));
   a->used = 0;
   a->size = initialSize;
 }
@@ -20,7 +20,7 @@ void insertCharArray(CharArray *a, char element) {
     } else {
       a->size *= 2;
     }
-    a->array = realloc(a->array, a->size * sizeof(char));
+    a->array = (char *) realloc(a->array, a->size * sizeof(char));
   }
   a->array[a->used++] = element;
 }

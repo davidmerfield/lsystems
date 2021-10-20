@@ -3,7 +3,7 @@
 
 
 void initRuleArray(RuleArray *a, size_t initialSize) {
-  a->array = malloc(initialSize * sizeof(Rule));
+  a->array = (Rule *) malloc(initialSize * sizeof(Rule));
   a->used = 0;
   a->size = initialSize;
 }
@@ -19,7 +19,7 @@ void insertRuleArray(RuleArray *a, Rule element) {
     } else {
       a->size *= 2;
     }
-    a->array = realloc(a->array, a->size * sizeof(Rule));
+    a->array = (Rule *) realloc(a->array, a->size * sizeof(Rule));
   }
   a->array[a->used++] = element;
 }

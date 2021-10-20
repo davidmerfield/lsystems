@@ -9,7 +9,7 @@ inline int max (int x, int y) {
 }
 
 void initializeLineArray(LineArray *a, size_t initialSize) {
-  a->array = malloc(initialSize * sizeof(Line));
+  a->array = (Line *) malloc(initialSize * sizeof(Line));
   a->used = 0;
   a->size = initialSize;
   a->maxDepth = 0;
@@ -22,7 +22,7 @@ void insertLineArray(LineArray *a, Line element) {
     } else {
       a->size *= 2;
     }
-    a->array = realloc(a->array, a->size * sizeof(Line));
+    a->array = (Line *) realloc(a->array, a->size * sizeof(Line));
   }
   a->array[a->used] = element;
 

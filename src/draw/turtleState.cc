@@ -2,7 +2,7 @@
 
 
 void initializeTurtleStateStack(TurtleStateStack * a, size_t initialSize) {
-  a->array = malloc(initialSize * sizeof(TurtleState));
+  a->array = (TurtleState *) malloc(initialSize * sizeof(TurtleState));
   a->used = 0;
   a->size = initialSize;
 }
@@ -24,7 +24,7 @@ void pushTurtleStateStack(TurtleStateStack * a, TurtleState element) {
     } else {
       a->size *= 2;
     }
-    a->array = realloc(a->array, a->size * sizeof(TurtleState));
+    a->array = (TurtleState *) realloc(a->array, a->size * sizeof(TurtleState));
   }
   a->array[a->used++] = element;
 }

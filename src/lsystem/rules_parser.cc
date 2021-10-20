@@ -58,7 +58,7 @@ int handle_line(char line[256], Rule * new_rule) {
     return 0;
   }
 
-  char * value = malloc(value_len + 1);
+  char * value = (char *) malloc(value_len + 1);
 
   for (int x = 0; x < value_len; x++) {
     value[x] = line[x + 2];
